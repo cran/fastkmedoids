@@ -1,0 +1,14 @@
+2c210d99de3efd16eefe1d3b12b4ac78 *DESCRIPTION
+a705db1dd86cf6cc8864564f2a5f65ee *NAMESPACE
+c9f45d087dbd9f8295db4b96f917c3a9 *R/KmedoidsResult.R
+13048c8fb49d59977162e35f3de0ff2d *R/RcppExports.R
+0484333f9a873284732aadf99c96f57b *man/KmedoidsResult-class.Rd
+01e5968a09d1ca029f6cac09b335708c *man/fastclara.Rd
+c50c4a4a00513bd9f6270af7d7b9b3c7 *man/fastclarans.Rd
+7cba7f3b8fd50470876c8cb533f7ad27 *man/fastkmedoids-package.Rd
+7f39a9986b363c27fe305a479ecadcdc *man/fastpam.Rd
+067daae5e301797bdae640c29435e9a6 *man/pam.Rd
+4af1f98384315e03c36f4a35d1f009f9 *src/RcppExports.cpp
+26cec33e44b64b322f28548c3a5f3307 *src/pam.cpp
+4ec2b6fdfccf2a75d80c19a70de4a501 *src/pam.h
+aa166cf0e07569fbec77ddd79b6d8b81 *src/rcpp_fastkmedoids.cpp
