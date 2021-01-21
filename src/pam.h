@@ -29,14 +29,19 @@ using namespace boost;
  */
 class Xoroshiro128Random
 {
-    long long s0;
-    long long s1;
+    signed long long s0;
+    signed long long s1;
 public:
-    Xoroshiro128Random(long long xor64 = 123456789) {
+    Xoroshiro128Random() {
+        
+    }
+    virtual ~Xoroshiro128Random() {}
+    
+    void SetSeed(signed long long xor64) {
         // set seed
         // XorShift64* generator to seed:
-        if (xor64 == 0)
-            xor64 = 4101842887655102017L;
+        //if (xor64 == 0)
+        //    xor64 = 4101842887655102017L;
         xor64 ^= (unsigned long long)xor64 >> 12; // a
         xor64 ^= xor64 << 25; // b
         xor64 ^= (unsigned long long)xor64 >> 27; // c
@@ -46,16 +51,16 @@ public:
         xor64 ^= (unsigned long long)xor64 >> 27; // c
         s1 = xor64 * 2685821657736338717L;
     }
-    virtual ~Xoroshiro128Random() {}
+    
     int nextInt(int n) {
         if (n <=0) return 0;
         int r =  (int)((n & -n) == n ? nextLong() & n - 1 // power of two
             : (unsigned long long)(((unsigned long long)nextLong() >> 32) * n) >> 32);
         return r;
     }
-    long long nextLong() {
-        long long t0 = s0, t1 = s1;
-        long long result = t0 + t1;
+    signed long long nextLong() {
+        signed long long t0 = s0, t1 = s1;
+        signed long long result = t0 + t1;
         t1 ^= t0;
         // left rotate: (n << d)|(n >> (INT_BITS - d));
         s0 = (t0 << 55) | ((unsigned long long)t0 >> (64 - 55));
@@ -175,7 +180,7 @@ public:
 class BUILD : public PAMInitializer
 {
 public:
-    BUILD(DistMatrix* dist) : PAMInitializer(dist) {}
+    BUILD(DistMatrix* dist);
     virtual ~BUILD(){}
     virtual std::vector<int> run(const std::vector<int>& ids, int k);
 };
@@ -185,7 +190,7 @@ class LAB : public PAMInitializer
 {
     
 public:
-    LAB(DistMatrix* dist, int seed=123456789) : PAMInitializer(dist), random(seed) {}
+    LAB(DistMatrix* dist, int seed);
     virtual ~LAB(){}
     virtual std::vector<int> run(const std::vector<int>& ids, int k);
     
@@ -359,7 +364,7 @@ public:
     // independent NOT Keep the previous medoids in the next sample
     //    false: using previous medoids in next sample
     CLARA(int num_obs, DistMatrix* dist_matrix,  PAMInitializer* init,
-          int k, int maxiter, int numsamples, double sampling, bool independent, int seed=123456789);
+          int k, int maxiter, int numsamples, double sampling, bool independent, int seed);
     
     virtual ~CLARA();
     
@@ -424,7 +429,7 @@ public:
     //    true if numsamples > 1
     FastCLARA(int num_obs, DistMatrix* dist_matrix, PAMInitializer* init,
               int k, int maxiter, double fasttol,
-              int numsamples, double sampling, bool independent, int seed=123456789);
+              int numsamples, double sampling, bool independent, int seed);
     
     virtual ~FastCLARA() {}
     
@@ -481,7 +486,7 @@ public:
     // maxneighbor Sampling rate. If less than 1, it is considered to be a relative value.
     //    default:  0.0125
     CLARANS(int num_obs, DistMatrix* dist_matrix,
-            int k, int numlocal, double maxneighbor, int seed=123456789);
+            int k, int numlocal, double maxneighbor, int seed);
     
     virtual ~CLARANS();
     
@@ -562,7 +567,7 @@ public:
     // maxneighbor Sampling rate. If less than 1, it is considered to be a relative value.
     //    default:  2 * 0.0125, larger sampling rate
     FastCLARANS(int num_obs, DistMatrix* dist_matrix,
-                int k, int numlocal, double maxneighbor,  int seed=123456789);
+                int k, int numlocal, double maxneighbor,  int seed);
     virtual ~FastCLARANS() {}
     
     virtual double run();
