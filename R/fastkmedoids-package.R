@@ -1,0 +1,64 @@
+#' fastkmedoids: Faster K-Medoids Clustering Algorithms
+#'
+#' This package provides R wrappers of C++ implementation of Faster K-Medoids
+#' clustering algorithms (FastPAM, FastCLARA and FastCLARANS) 
+#' proposed in Erich Schubert and Peter J. Rousseeuw 2019.
+#'
+#' @details
+#' The C++ Faster K-Medoids clustering algorithms (FastPAM, FastCLARA and FastCLARANS) 
+#' are ported from ELKI project (see \url{https://elki-project.github.io/}). To generate identical
+#' results, the random number generator, specifically the xorshift+ generator, is also ported.
+#' The results between this fastkmedoids R package should be the same with ELKI if using
+#' same initial seed for random number generator. 
+#' 
+#' Besides FastPAM, FastCLARA and FastCLARANS, the classic algorithms, including PAM, CLARA and CLARANS,
+#' are also implemented. If interested in writing wrappers for these algorithms, please use the 
+#' github repository: \url{https://github.com/lixun910/fastkmedoids}
+#' 
+#' All three algorithms take the distance matrix (lower triangular part, column wise storage)
+#' as input, which can be computed using dist() function in R (see the examples below). If
+#' using a pre-computed distance matrix, please transform it (lower triangular part, 
+#' column wise storage) to a 1-dimensional array.
+#' 
+#' All three algorithms takes the same parameters as in ELKI. If the explanation of the 
+#' input parameters is not clear, please refer to ELKI:
+#' \itemize{
+#'   \item FastPAM: \url{https://elki-project.github.io/releases/current/javadoc/elki/clustering/kmedoids/FastPAM.html}
+#'   \item FastCLARA: \url{https://elki-project.github.io/releases/current/javadoc/elki/clustering/kmedoids/FastCLARA.html}
+#'   \item FastCLARANS: \url{https://elki-project.github.io/releases/current/javadoc/elki/clustering/kmedoids/FastCLARANS.html}
+#' }
+#' 
+#' The C++ code is a part of GeoDa (\url{https://github.com/geodacenter/geoda}) and libgeoda. 
+#' If you are interested in a GUI version of this C++ implementation, you can download
+#' and use the free and cross-platform GeoDa software from \url{https://geodacenter.github.io}.
+#' The lab note of using K-Medoids in GeoDa is here:
+#' \url{https://geodacenter.github.io/workbook/7c_clusters_3/lab7c.html#k-medoids}.
+#'
+#' @references
+#' Erich Schubert, Peter J. Rousseeuw "Faster k-Medoids Clustering: Improving the PAM, CLARA, and CLARANS Algorithms" 2019 
+#' \doi{10.1007/978-3-030-32047-8_16}
+#'
+#' @seealso \url{https://arxiv.org/abs/1810.05691}
+#'
+#' @examples
+#' # We use the demo data sets "USArrests"
+#' data("USArrests")
+#' df <- scale(USArrests)
+#' dv <- as.vector(dist(df)) # compute distance matrix (lower triangular part)
+#' n <- nrow(df)
+#' 
+#' # PAM
+#' clusters <- pam(dv, n, k=3)
+#' clusters
+#' 
+#' # FastPAM (use "LAB" initializer by default)
+#' clusters1 <- fastpam(dv, n, k=3)
+#' clusters1
+#'
+#' @keywords internal
+"_PACKAGE"
+
+#' @import methods
+#' @importFrom Rcpp evalCpp
+#' @useDynLib fastkmedoids, .registration = TRUE
+NULL

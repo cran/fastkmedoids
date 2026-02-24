@@ -3,6 +3,7 @@
 #' @slot cost The cost value of kmedoids clustering
 #' @slot medoids The medoids of kmedoids clustering
 #' @slot assignment The assignment of which cluster each observation belongs to of kmedoids clustering
+#' @exportClass KmedoidsResult
 setClass (
   # Class name
   "KmedoidsResult",
