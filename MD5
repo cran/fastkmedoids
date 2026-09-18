@@ -1,4 +1,4 @@
-2009717e628905b2f91bc972c0589d98 *DESCRIPTION
+1b1a906393f834426abebd68e2ef9063 *DESCRIPTION
 ede9d18dfef9b74f031f8589907b7f43 *NAMESPACE
 2cea66a9b7d098cf9e504983a19e39e8 *R/KmedoidsResult.R
 0987b8f1b11b1f35e567a4f77b142424 *R/RcppExports.R
@@ -11,8 +11,8 @@ c50c4a4a00513bd9f6270af7d7b9b3c7 *man/fastclarans.Rd
 7f39a9986b363c27fe305a479ecadcdc *man/fastpam.Rd
 067daae5e301797bdae640c29435e9a6 *man/pam.Rd
 4b2ce14c5bf2f473bb184abe3459936c *src/RcppExports.cpp
-06b90bf7113065a24fbe5343c9a9ffb2 *src/pam.cpp
-8ce22317468ad426bdbce3db7e11ace0 *src/pam.h
+bd7ff08659c53a5cf9a4dac78eb2137e *src/pam.cpp
+3d759910df30d75ced6aad79746a5182 *src/pam.h
 a9c0018179e0c854657a64c45dceef9b *src/rcpp_fastkmedoids.cpp
 8445c33cfe88e242b240be8884f5ee11 *tests/testthat.R
 b34c56896b661cda2e1ca732674712be *tests/testthat/test-kmedoids.R

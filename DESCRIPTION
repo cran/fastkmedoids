@@ -2,8 +2,8 @@ Package: fastkmedoids
 Type: Package
 Title: Faster K-Medoids Clustering Algorithms: FastPAM, FastCLARA,
         FastCLARANS
-Version: 1.6
-Date: 2026-03-25
+Version: 1.7
+Date: 2026-08-26
 Authors@R: person(given = "Xun",
                   family = "Li",
                   role = c("aut", "cre"),
@@ -19,8 +19,8 @@ Suggests: testthat (>= 3.0.0)
 Config/testthat/edition: 3
 RoxygenNote: 7.3.2
 NeedsCompilation: yes
-Packaged: 2026-03-25 23:38:45 UTC; xun
+Packaged: 2026-08-26 22:59:12 UTC; xun
 Author: Xun Li [aut, cre]
 Maintainer: Xun Li <lixun910@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-03-26 13:50:02 UTC
+Date/Publication: 2026-09-18 19:20:02 UTC
